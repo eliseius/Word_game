@@ -1,6 +1,8 @@
 import json
 import random
 
+from settings import NUMB_LETTERS_IN_WORD
+
 
 def get_nouns_with_definition():
     with open('dictionary.json', 'r', encoding='utf-8') as file:
@@ -10,10 +12,11 @@ def get_nouns_with_definition():
 
 def get_random_word():
     dictionary = get_nouns_with_definition()
-    words = []
-    for key in dictionary.keys():
-        words.append(key)
-    return random.choice(words)
+    words = [key for key in dictionary.keys()]
+    word_random = random.choice(words)
+    letters_word_random = list(word_random.upper())
+
+    return word_random, letters_word_random
 
 
 def get_all_short_words():
@@ -22,19 +25,19 @@ def get_all_short_words():
     return all_short_words
 
 
-def check_correctly_word(word):
-    all_short_words = get_all_short_words()
-    word_check = []
-    word_check.append(word)
-    if set(word_check) & set(all_short_words):
-        return word
-    else:
-        print('Такого слова не существует. Проверьте правильность написания.')
-        return None
+def create_list_empty():
+    list_empty = []
+    for _ in range(NUMB_LETTERS_IN_WORD):
+        list_empty.append(' ')
+    return list_empty
 
 
-def print_random_word(word):
-    dictionary = get_nouns_with_definition()
-    specification = dictionary.get(word)
-    print(f'Загаданное слово {word}')
-    print(f'Значение\n{specification}')
+def print_words_user (words_user):
+    for word in words_user:
+        word_split = list(word.upper())
+        format_word = '  '.join(word_split)
+        print(format_word)
+
+
+if __name__ == '__main__':
+    pass
