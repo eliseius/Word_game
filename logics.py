@@ -37,7 +37,7 @@ def output_guessed_letter(set_indices, word, joint_letters):
                     index_copy_total_letters = copy_joint_letters.index(letter)
                     if index == index_copy_total_letters:
                         temp_set_excess_index.add(index)
-                        copy_joint_letters[index] = ' '
+                        copy_joint_letters[index] = '*'
         set_indices.difference_update(temp_set_excess_index)
         print_guessed_letters(set_indices, word)
         print_matching_letters(joint_letters)
@@ -54,7 +54,7 @@ def print_guessed_letters(set_indices, word):
 
 def print_matching_letters(joint_letters):
     for letter in joint_letters:
-        if letter != ' ':
+        if letter != '*':
             print('Буквы с правильным расположением')
             print(change_format(joint_letters))
             break
