@@ -1,8 +1,6 @@
 import json
 import random
 
-from pathlib import Path
-
 from create_dict import get_file_path
 from settings import NUMB_LETTERS_IN_WORD
 
